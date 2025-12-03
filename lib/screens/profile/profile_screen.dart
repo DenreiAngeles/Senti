@@ -269,7 +269,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  "This app was built for CS-321: Human Computer Interaction.",
+                  "This app was built for CS-312: Mobile Computing.",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.inter(fontSize: 12, color: text.withOpacity(0.5), fontStyle: FontStyle.italic),
                 ),
