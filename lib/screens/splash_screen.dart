@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../main.dart';
-import 'auth/welcome_screen.dart'; // Correct path to WelcomeScreen
+import 'auth/welcome_screen.dart'; 
+import 'dashboard/dashboard_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -31,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       CurvedAnimation(parent: _controller, curve: Curves.easeIn),
     );
 
-    // Slide Up slightly (from offset 0.5 to 0)
+    // Slide Up slightly
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0, 0.5), 
       end: Offset.zero,
@@ -40,21 +42,36 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     // Start Animation
     _controller.forward();
 
-    // Navigate to Welcome Screen after 3 seconds
-    Timer(const Duration(seconds: 3), () {
-      if (mounted) {
-        Navigator.of(context).pushReplacement(
-          PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) => const WelcomeScreen(),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              // Smooth fade transition to Welcome Screen
-              return FadeTransition(opacity: animation, child: child);
-            },
-            transitionDuration: const Duration(milliseconds: 800),
-          ),
-        );
-      }
-    });
+    // Check Auth Status after delay
+    _checkLoginStatus();
+  }
+
+  Future<void> _checkLoginStatus() async {
+    // Wait for the animation/splash duration
+    await Future.delayed(const Duration(seconds: 3));
+
+    if (!mounted) return;
+
+    // Check if a user is already logged in
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      // User is logged in -> Go to Dashboard
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const DashboardScreen()),
+      );
+    } else {
+      // No user -> Go to Welcome Screen
+      Navigator.of(context).pushReplacement(
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => const WelcomeScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+          transitionDuration: const Duration(milliseconds: 800),
+        ),
+      );
+    }
   }
 
   @override
@@ -66,7 +83,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: SentiColors.primary, // Deep Green
+      backgroundColor: SentiColors.primary, 
       body: Center(
         child: FadeTransition(
           opacity: _fadeAnimation,
@@ -75,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
             child: Text(
               'Senti',
               style: GoogleFonts.inter(
-                fontSize: 64, // Large, bold text
+                fontSize: 64, 
                 fontWeight: FontWeight.w900,
                 color: Colors.white,
                 letterSpacing: -2.0,
