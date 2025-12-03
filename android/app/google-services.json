@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "175869282716",
+    "project_id": "senti-c663f",
+    "storage_bucket": "senti-c663f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175869282716:android:88d449859176b0951fe059",
+        "android_client_info": {
+          "package_name": "com.example.senti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175869282716-uv04md0u908vnpgc29l0sthrr8ip256e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-bq_3qj9rI4UlK_GBYxbCsesb9jfNPYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175869282716-uv04md0u908vnpgc29l0sthrr8ip256e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
