@@ -263,7 +263,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  "Senti is a passion project created by a Computer Science student as part of a University course.",
+                  "Senti is a passion project created by Computer Science students as part of a University course requirement.",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.inter(fontSize: 14, color: text.withOpacity(0.8), height: 1.5),
                 ),

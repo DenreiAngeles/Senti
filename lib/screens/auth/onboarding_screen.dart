@@ -248,7 +248,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 onPageChanged: (idx) => setState(() => _currentPage = idx),
                 children: [
                   _SelectionStep(
-                    title: "Everyone's financial story is unique.\nWhat does yours look like right now?",
+                    title: "Everyone's financial story is unique. What does yours look like right now?",
                     options: const [
                       {'icon': FontAwesomeIcons.briefcase, 'label': 'Full-time Employed'},
                       {'icon': FontAwesomeIcons.chartLine, 'label': 'Freelance/Self-Employed'},
@@ -260,7 +260,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
 
                   _SelectionStep(
-                    title: "Great things are ahead! What's the\nnext big milestone you'd like to celebrate?",
+                    title: "Great things are ahead! What's the next big milestone you'd like to celebrate?",
                     options: const [
                       {'icon': FontAwesomeIcons.gift, 'label': 'Saving for something special'},
                       {'icon': FontAwesomeIcons.shieldHalved, 'label': 'Building my peace of mind'},
